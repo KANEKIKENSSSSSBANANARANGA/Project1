@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    body {
+        background-image: url(https://a.d-cd.net/c7ege1s-1920.jpg);
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #333;
+        color: rgba(255, 0, 0, 0.83);
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-links a {
+        color: #ffffff;
+        margin-left: 10px;
+        text-decoration: none;
+    }
+
+    .nav-links a.logout-button {
+        background-color: #424242;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .content {
+        margin-top: 50px;
+        padding: 20px;
+        background-color: rgba(166, 166, 166, 0.8);
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .login-form button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+</style>
+  <h1>Login</h1>
+    <hr>
+
+    {% if form.errors %}
+        <p>{{ form.errors.error }}</p>
+
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post" class="login-form">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Войти</button>
+    </form>
+{% endblock %}
+
+
